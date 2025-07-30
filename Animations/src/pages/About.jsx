@@ -297,7 +297,7 @@ export default function About() {
           viewport={{ once: true }}
         >
           <motion.h3 
-            className="text-xl md:text-2xl font-bold mb-4 text-white"
+            className="text-xl md:text-2xl font-bold mb-4 text-[#fff]"
             whileHover={{ scale: 1.05 }}
           >
             Ready to Bring Your Vision to Life?

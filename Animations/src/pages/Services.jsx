@@ -268,7 +268,7 @@ function FloatingSceneCard({ scene, index, hoveredScene, setHoveredScene }) {
   
   return (
     <motion.div
-      className="bg-gradient-to-br from-white via-white to-gray-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer group relative"
+      className="bg-gradient-to-br from-[#fff] via-[#fff] to-gray-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer group relative"
       initial={{ opacity: 0, y: 100, rotateX: -45 }}
       whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ 
@@ -318,7 +318,7 @@ function FloatingSceneCard({ scene, index, hoveredScene, setHoveredScene }) {
             {Array.from({ length: 6 }).map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1 h-1 bg-white rounded-full"
+                className="absolute w-1 h-1 bg-[#fff] rounded-full"
                 style={{
                   left: `${20 + i * 15}%`,
                   top: `${30 + (i % 2) * 30}%`,
