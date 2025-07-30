@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useScroll, useTransform ,motion } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useScroll, motion, useTransform, useSpring } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import bgVideo from "../assets/animation.mp4";
@@ -14,7 +14,7 @@ function CharacterCarousel({ items }) {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const [current, setCurrent] = useState(0);
   const width = isMobile ? 250 : 300;
-  const gap = isMobile ? 15 : 30;
+  isMobile ? 15 : 30;
 
   // Auto-rotate the carousel
   useEffect(() => {

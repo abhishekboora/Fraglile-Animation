@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useTransform, useSpring, useMotionValue, useScroll } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion,useTransform, useScroll } from "framer-motion";
 import { useMediaQuery } from 'react-responsive';
 import chars1 from "../assets/img35.jpg";
 import chars2 from "../assets/img36.jpg";
@@ -15,9 +15,6 @@ import mountain from "../assets/img43.jpg";
 function Enhanced3DCarousel({ items }) {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const [current, setCurrent] = useState(0);
-  const [dragConstraints, setDragConstraints] = useState({ left: 0, right: 0 });
-  const carouselRef = useRef(null);
-  const x = useMotionValue(0);
   
   const CARD_SIZE = isMobile ? 280 : 350;
   const SPACING = isMobile ? 40 : 60;
