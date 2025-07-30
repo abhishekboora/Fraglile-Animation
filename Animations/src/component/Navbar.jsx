@@ -43,10 +43,12 @@ export default function Navbar() {
             onClick={() => window.scrollTo(0, 0)}
           >
             <motion.div
-              className="text-2xl font-bold tracking-wide pl-2" style={{lineHeight: 1.1, paddingBottom: '0.15em', background: 'linear-gradient(135deg, #E43E5A 0%, #CDBBA4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}
+              className="text-2xl font-bold tracking-wide pl-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{
+                lineHeight: 1.1,
+                paddingBottom: '0.15em',
                 background: 'linear-gradient(135deg, #E43E5A 0%, #CDBBA4 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
