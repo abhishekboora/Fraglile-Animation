@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useScroll, useTransform ,motion } from 'framer-motion';
+import { useScroll, useTransform, motion } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import ardhmanLogo from '../assets/aardman.svg';
+import jellyvisionLogo from '../assets/jellyvision.svg';
+import studioAkaLogo from '../assets/studioaka.svg';
+import drasikLogo from '../assets/drasik.gif';
+import telnyxLogo from '../assets/telnyx.svg';
+
 
 export default function About() {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -15,6 +21,34 @@ export default function About() {
       once: true,
     });
   }, []);
+
+  const clients = [
+    {
+      name: 'Aardman Studios',
+      logo: ardhmanLogo,
+      href: 'https://www.aardman.com/',
+    },
+    {
+      name: 'Jellyvision',
+      logo: jellyvisionLogo,
+      href: 'https://www.jellyvision.com/',
+    },
+    {
+      name: 'Studio Aka',
+      logo: studioAkaLogo,
+      href: 'https://studioaka.co.uk/',
+    },
+    {
+      name: 'Drasik Studio',
+      logo: drasikLogo,
+      href: 'https://www.drasik.com/',
+    },
+    { 
+      name: 'Telnyx', 
+      logo:   telnyxLogo, 
+      href: 'https://telnyx.com/' 
+    },
+  ];
 
   const teamMembers = [
     {
@@ -138,7 +172,7 @@ export default function About() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
           >
-            {["10+ Years", "500+ Projects", "50+ Awards", "Global Reach"].map((stat, index) => (
+            {["2+Years", "100+ Projects", "50+ Awards", "Global Reach"].map((stat, index) => (
               <motion.div
                 key={stat}
                 className="bg-gradient-to-r from-[#E43E5A]/20 to-[#CDBBA4]/20 backdrop-blur-sm border border-[#E43E5A]/30 rounded-full px-6 py-3"
@@ -155,6 +189,59 @@ export default function About() {
               </motion.div>
             ))}
           </motion.div>
+        </motion.div>
+
+        {/* Clients Section */}
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div className="text-center mb-12">
+            <motion.h3 
+              className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-[#E43E5A] to-[#CDBBA4] bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Trusted by Leading Brands
+            </motion.h3>
+            <motion.p
+              className="text-md text-gray-400 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              We're proud to have collaborated with innovative companies across various industries.
+            </motion.p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+            {clients.map((client, index) => (
+              <motion.div
+                key={client.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <a
+                  href={client.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block"
+                >
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="h-8 md:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy"
+                  />
+                </a>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Our Values Section */}

@@ -16,12 +16,12 @@ function Enhanced3DCarousel({ items }) {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const [current, setCurrent] = useState(0);
   
-  const CARD_SIZE = isMobile ? 280 : 350;
-  const SPACING = isMobile ? 40 : 60;
+  const CARD_SIZE = isMobile ? 200 : 280;
+  const SPACING = isMobile ? 30 : 50;
   const VISIBLE_CARDS = isMobile ? 1 : 3;
   
   // Calculate positions for 3D effect
-  const radius = 400;
+  const radius = isMobile ? 250 : 320;
   const center = Math.floor(items.length / 2);
   
   // Auto-rotate with pause on hover
@@ -43,7 +43,7 @@ function Enhanced3DCarousel({ items }) {
     
     if (isMobile) {
       return {
-        x: relativeIndex === 0 ? 0 : relativeIndex < items.length / 2 ? -400 : 400,
+        x: relativeIndex === 0 ? 0 : relativeIndex < items.length / 2 ? -300 : 300,
         rotateY: 0,
         z: 0,
         opacity: relativeIndex === 0 ? 1 : 0,
@@ -66,7 +66,7 @@ function Enhanced3DCarousel({ items }) {
 
   return (
     <div 
-      className="relative w-full h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden perspective-1000"
+      className="relative w-full h-[450px] md:h-[500px] flex items-center justify-center overflow-hidden perspective-1000"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -79,7 +79,7 @@ function Enhanced3DCarousel({ items }) {
           return (
             <motion.div
               key={item.name}
-              className={`absolute w-[280px] md:w-[350px] h-[420px] md:h-[500px] cursor-pointer ${
+              className={`absolute w-[200px] md:w-[280px] h-[300px] md:h-[380px] cursor-pointer ${
                 isActive ? 'z-20' : 'z-10'
               }`}
               style={{
@@ -94,7 +94,7 @@ function Enhanced3DCarousel({ items }) {
                 opacity: style.opacity,
                 scale: style.scale,
                 marginLeft: -(CARD_SIZE / 2),
-                marginTop: -(250),
+                marginTop: -(190),
               }}
               transition={{
                 duration: 0.8,
@@ -164,14 +164,14 @@ function Enhanced3DCarousel({ items }) {
 
                 {/* Character Info */}
                 <motion.div 
-                  className="relative z-20 p-4 md:p-6 h-1/4 flex flex-col justify-center"
+                  className="relative z-20 p-3 md:p-4 h-1/4 flex flex-col justify-center"
                   animate={{
                     y: isActive ? 0 : 10,
                     opacity: isActive ? 1 : 0.8,
                   }}
                 >
                   <motion.h3 
-                    className="text-xl md:text-2xl font-bold mb-2 bg-gradient-to-r from-[#E43E5A] to-[#CDBBA4] bg-clip-text text-transparent"
+                    className="text-lg md:text-xl font-bold mb-1 bg-gradient-to-r from-[#E43E5A] to-[#CDBBA4] bg-clip-text text-transparent"
                     animate={{
                       scale: isActive ? 1 : 0.95,
                     }}
@@ -179,7 +179,7 @@ function Enhanced3DCarousel({ items }) {
                     {item.name}
                   </motion.h3>
                   <motion.p 
-                    className="text-sm md:text-base text-gray-600 leading-relaxed"
+                    className="text-xs md:text-sm text-gray-600 leading-relaxed line-clamp-3"
                     animate={{
                       opacity: isActive ? 1 : 0.7,
                     }}
@@ -196,7 +196,7 @@ function Enhanced3DCarousel({ items }) {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.3 }}
                   >
-                    <div className="w-12 h-12 bg-gradient-to-br from-[#E43E5A]/20 to-[#CDBBA4]/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <div className="w-8 h-8 bg-gradient-to-br from-[#E43E5A]/20 to-[#CDBBA4]/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                       <motion.div
                         className="w-2 h-2 bg-[#E43E5A] rounded-full"
                         animate={{
@@ -218,10 +218,10 @@ function Enhanced3DCarousel({ items }) {
       </div>
 
       {/* Navigation Controls */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-4 z-30">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-3 z-30">
         {/* Previous Button */}
         <motion.button
-          className="w-12 h-12 bg-gradient-to-r from-[#E43E5A] to-[#CDBBA4] rounded-full flex items-center justify-center text-white font-bold shadow-lg"
+          className="w-10 h-10 bg-gradient-to-r from-[#E43E5A] to-[#CDBBA4] rounded-full flex items-center justify-center text-white font-bold shadow-lg"
           whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(228, 62, 90, 0.5)" }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setCurrent((current - 1 + items.length) % items.length)}
@@ -236,7 +236,7 @@ function Enhanced3DCarousel({ items }) {
               key={index}
               className={`h-2 rounded-full transition-all ${
                 current === index 
-                  ? 'w-8 bg-gradient-to-r from-[#E43E5A] to-[#CDBBA4]' 
+                  ? 'w-6 bg-gradient-to-r from-[#E43E5A] to-[#CDBBA4]' 
                   : 'w-2 bg-white/50'
               }`}
               whileHover={{ scale: 1.2 }}
@@ -247,7 +247,7 @@ function Enhanced3DCarousel({ items }) {
 
         {/* Next Button */}
         <motion.button
-          className="w-12 h-12 bg-gradient-to-r from-[#CDBBA4] to-[#E43E5A] rounded-full flex items-center justify-center text-white font-bold shadow-lg"
+          className="w-10 h-10 bg-gradient-to-r from-[#CDBBA4] to-[#E43E5A] rounded-full flex items-center justify-center text-white font-bold shadow-lg"
           whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(205, 187, 164, 0.5)" }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setCurrent((current + 1) % items.length)}
@@ -508,13 +508,13 @@ export default function Services() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Enhanced Title */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <motion.h2 
-            className="text-4xl md:text-7xl font-bold text-white mb-6"
+            className="text-3xl md:text-5xl font-bold text-white mb-4"
             animate={{
               textShadow: [
                 "0 0 20px rgba(228, 62, 90, 0.5)",
@@ -541,7 +541,7 @@ export default function Services() {
           </motion.h2>
           
           <motion.p
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            className="text-lg text-gray-300 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -552,7 +552,7 @@ export default function Services() {
 
         {/* Enhanced 3D Carousel */}
         <motion.div
-          className="mb-32"
+          className="mb-24"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.8, duration: 1 }}
@@ -653,7 +653,7 @@ export default function Services() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold text-center text-white mb-6"
+            className="text-3xl md:text-5xl font-bold text-center text-white mb-4"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -676,7 +676,7 @@ export default function Services() {
           </motion.h2>
 
           <motion.p
-            className="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16"
+            className="text-lg text-gray-300 text-center max-w-2xl mx-auto mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}

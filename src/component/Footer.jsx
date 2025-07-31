@@ -92,7 +92,7 @@ export default function Footer() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p className="text-gray-500 text-xs md:text-sm">
+          <p className="text-white text-xs md:text-sm">
             &copy; {new Date().getFullYear()} Fragile Animations. All rights reserved.
           </p>
         </motion.div>
